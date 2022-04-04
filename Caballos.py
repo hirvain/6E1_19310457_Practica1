@@ -54,7 +54,12 @@ class ListaDoblementeEnlazada:
         for y in range(5):
             print(actual.vel, actual.nombre)
             actual = actual.next
-                
+    
+    def mostrarTodos(self):
+        actual = self.inicio
+        for y in range(36):
+            print(actual.vel, actual.nombre)
+            actual = actual.next
 
     def carreras1a5(self):
         actual = self.inicio
@@ -202,10 +207,50 @@ if(carrera5.inicio.nombre==carrera6.inicio.next.nombre):
 
 carrera7.insertarGanador(carrera6.inicio.next.next.nombre,carrera6.inicio.next.next.vel)
 
-
-
 carrera7.mostrar()
 print("----------------------------")
 carrera7.carreras1a5()
 carrera7.mostrar()
 print("----------------------------")
+print("----------------------------")
+
+listaProceso = ListaDoblementeEnlazada()
+
+listaProceso.insertarGanador(carrera6.inicio.nombre,carrera6.inicio.vel)
+
+actual = carrera7.inicio
+for x in range(5):
+    listaProceso.insertarGanador(actual.nombre,actual.vel)
+    actual = actual.next
+
+actual = carrera6.inicio
+for x in range(5):
+    listaProceso.insertarGanador(actual.nombre,actual.vel)
+    actual = actual.next
+
+actual = carrera5.inicio
+for x in range(5):
+    listaProceso.insertarGanador(actual.nombre,actual.vel)
+    actual = actual.next
+    
+actual = carrera4.inicio
+for x in range(5):
+    listaProceso.insertarGanador(actual.nombre,actual.vel)
+    actual = actual.next
+    
+actual = carrera3.inicio
+for x in range(5):
+    listaProceso.insertarGanador(actual.nombre,actual.vel)
+    actual = actual.next
+
+actual = carrera2.inicio
+for x in range(5):
+    listaProceso.insertarGanador(actual.nombre,actual.vel)
+    actual = actual.next
+    
+actual = carrera1.inicio
+for x in range(5):
+    listaProceso.insertarGanador(actual.nombre,actual.vel)
+    actual = actual.next
+
+listaProceso.mostrarTodos()
