@@ -5,6 +5,9 @@ Created on Sun Apr  3 01:17:04 2022
 @author: @author: Oscar Antonio García Avila  19310457  6E1
 """
 import random
+import graphviz
+from pprint import pformat
+from graphviz import Digraph
 
 nombres = ['Tormenta China','Paco','Perez','Tony','Soprano','Michael','Dwight','Barry','Pollo','Vito','Boba','Falcone','Paul','George','Ringo','John','Max','Elton','Grogu','Chewie','R2','Alfred','Tim','Tulio','Spencer']
 
@@ -254,3 +257,17 @@ for x in range(5):
     actual = actual.next
 
 listaProceso.mostrarTodos()
+
+
+
+dot = Digraph(comment='The Round Table')
+dot.node('A', 'King Arthur')
+dot.node('B', 'Sir Bedevere the Wise')
+dot.node('L', 'Sir Lancelot the Brave')
+
+dot.edges(['AB', 'AL'])
+dot.edge('B', 'L', constraint='false')
+print(dot.source)  
+
+dot.render('test-output/round-table.gv', view=True)  
+
