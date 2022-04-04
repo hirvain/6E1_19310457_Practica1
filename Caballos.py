@@ -144,11 +144,68 @@ print("----------------------------")
 carrera5.carreras1a5()
 carrera5.mostrar()
 
-
-
-
-caballosGanadores = ListaDoblementeEnlazada()
-#caballosGanadores.insertar(caballos1.inicio.nombre,caballos1.inicio.vel)
+print("////////////////////////////////////////////////")
+carrera6 = ListaDoblementeEnlazada()
+carrera6.insertarGanador(carrera1.inicio.nombre,carrera1.inicio.vel)
+carrera6.insertarGanador(carrera2.inicio.nombre,carrera2.inicio.vel)
+carrera6.insertarGanador(carrera3.inicio.nombre,carrera3.inicio.vel)
+carrera6.insertarGanador(carrera4.inicio.nombre,carrera4.inicio.vel)
+carrera6.insertarGanador(carrera5.inicio.nombre,carrera5.inicio.vel)
+carrera6.mostrar()
+print("----------------------------")
+carrera6.carreras1a5()
+carrera6.mostrar()
 print("----------------------------")
 
+print("////////////////////////////////////////////////")
+carrera7 = ListaDoblementeEnlazada()
 
+if(carrera1.inicio.nombre==carrera6.inicio.nombre):
+    carrera7.insertarGanador(carrera1.inicio.next.nombre,carrera1.inicio.next.vel)
+    carrera7.insertarGanador(carrera1.inicio.next.next.nombre,carrera1.inicio.next.next.vel)
+    
+if(carrera2.inicio.nombre==carrera6.inicio.nombre):
+    carrera7.insertarGanador(carrera2.inicio.next.nombre,carrera2.inicio.next.vel)
+    carrera7.insertarGanador(carrera2.inicio.next.next.nombre,carrera2.inicio.next.next.vel)
+
+if(carrera3.inicio.nombre==carrera6.inicio.nombre):
+    carrera7.insertarGanador(carrera3.inicio.next.nombre,carrera3.inicio.next.vel)
+    carrera7.insertarGanador(carrera3.inicio.next.next.nombre,carrera3.inicio.next.next.vel)
+    
+if(carrera4.inicio.nombre==carrera6.inicio.nombre):
+    carrera7.insertarGanador(carrera4.inicio.next.nombre,carrera4.inicio.next.vel)
+    carrera7.insertarGanador(carrera4.inicio.next.next.nombre,carrera4.inicio.next.next.vel)
+    
+if(carrera5.inicio.nombre==carrera6.inicio.nombre):
+    carrera7.insertarGanador(carrera5.inicio.next.nombre,carrera5.inicio.next.vel)
+    carrera7.insertarGanador(carrera5.inicio.next.next.nombre,carrera5.inicio.next.next.vel)
+
+
+
+carrera7.insertarGanador(carrera6.inicio.next.nombre,carrera6.inicio.next.vel)
+
+if(carrera1.inicio.nombre==carrera6.inicio.next.nombre):
+    carrera7.insertarGanador(carrera1.inicio.next.nombre,carrera1.inicio.next.vel)
+    
+if(carrera2.inicio.nombre==carrera6.inicio.next.nombre):
+    carrera7.insertarGanador(carrera2.inicio.next.nombre,carrera2.inicio.next.vel)
+
+if(carrera3.inicio.nombre==carrera6.inicio.next.nombre):
+    carrera7.insertarGanador(carrera3.inicio.next.nombre,carrera3.inicio.next.vel)
+    
+if(carrera4.inicio.nombre==carrera6.inicio.next.nombre):
+    carrera7.insertarGanador(carrera4.inicio.next.nombre,carrera4.inicio.next.vel)
+    
+if(carrera5.inicio.nombre==carrera6.inicio.next.nombre):
+    carrera7.insertarGanador(carrera5.inicio.next.nombre,carrera5.inicio.next.vel)
+
+
+carrera7.insertarGanador(carrera6.inicio.next.next.nombre,carrera6.inicio.next.next.vel)
+
+
+
+carrera7.mostrar()
+print("----------------------------")
+carrera7.carreras1a5()
+carrera7.mostrar()
+print("----------------------------")
