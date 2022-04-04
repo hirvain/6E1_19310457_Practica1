@@ -107,16 +107,48 @@ class ListaDoblementeEnlazada:
                #print(actual.vel,"next")   
                 
                 
-caballos = ListaDoblementeEnlazada()
+carrera1 = ListaDoblementeEnlazada()
+carrera2 = ListaDoblementeEnlazada()
+carrera3 = ListaDoblementeEnlazada()
+carrera4 = ListaDoblementeEnlazada()
+carrera5 = ListaDoblementeEnlazada()
 for x in range(5):
-    caballos.insertar(nombres[x])
+    carrera1.insertar(nombres[x])
+    carrera2.insertar(nombres[x+5])
+    carrera3.insertar(nombres[x+10])
+    carrera4.insertar(nombres[x+15])
+    carrera5.insertar(nombres[x+20])
 
-caballos.mostrar()
+carrera1.mostrar()
+print("----------------------------")
+carrera1.carreras1a5()
+carrera1.mostrar()
+print("***********************************************")
+carrera2.mostrar()
+print("----------------------------")
+carrera2.carreras1a5()
+carrera2.mostrar()
+print("***********************************************")
+carrera3.mostrar()
+print("----------------------------")
+carrera3.carreras1a5()
+carrera3.mostrar()
+print("***********************************************")
+carrera4.mostrar()
+print("----------------------------")
+carrera4.carreras1a5()
+carrera4.mostrar()
+print("***********************************************")
+carrera5.mostrar()
+print("----------------------------")
+carrera5.carreras1a5()
+carrera5.mostrar()
+
+
+
 
 caballosGanadores = ListaDoblementeEnlazada()
 #caballosGanadores.insertar(caballos1.inicio.nombre,caballos1.inicio.vel)
 print("----------------------------")
-caballos.carreras1a5()
 
-caballos.mostrar()
 
