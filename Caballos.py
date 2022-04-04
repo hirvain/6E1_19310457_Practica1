@@ -5,9 +5,9 @@ Created on Sun Apr  3 01:17:04 2022
 @author: @author: Oscar Antonio García Avila  19310457  6E1
 """
 import random
-import graphviz
-from pprint import pformat
-from graphviz import Digraph
+import numpy as np
+import cv2
+ 
 
 nombres = ['Tormenta China','Paco','Perez','Tony','Soprano','Michael','Dwight','Barry','Pollo','Vito','Boba','Falcone','Paul','George','Ringo','John','Max','Elton','Grogu','Chewie','R2','Alfred','Tim','Tulio','Spencer']
 
@@ -128,27 +128,27 @@ for x in range(5):
     carrera5.insertar(nombres[x+20])
 
 carrera1.mostrar()
-print("----------------------------")
+print("------CARRERA 1--------")
 carrera1.carreras1a5()
 carrera1.mostrar()
 print("***********************************************")
 carrera2.mostrar()
-print("----------------------------")
+print("------CARRERA 2--------")
 carrera2.carreras1a5()
 carrera2.mostrar()
 print("***********************************************")
 carrera3.mostrar()
-print("----------------------------")
+print("------CARRERA 3--------")
 carrera3.carreras1a5()
 carrera3.mostrar()
 print("***********************************************")
 carrera4.mostrar()
-print("----------------------------")
+print("------CARRERA 4--------")
 carrera4.carreras1a5()
 carrera4.mostrar()
 print("***********************************************")
 carrera5.mostrar()
-print("----------------------------")
+print("------CARRERA 5--------")
 carrera5.carreras1a5()
 carrera5.mostrar()
 
@@ -160,7 +160,7 @@ carrera6.insertarGanador(carrera3.inicio.nombre,carrera3.inicio.vel)
 carrera6.insertarGanador(carrera4.inicio.nombre,carrera4.inicio.vel)
 carrera6.insertarGanador(carrera5.inicio.nombre,carrera5.inicio.vel)
 carrera6.mostrar()
-print("----------------------------")
+print("------CARRERA 6--------")
 carrera6.carreras1a5()
 carrera6.mostrar()
 print("----------------------------")
@@ -211,11 +211,11 @@ if(carrera5.inicio.nombre==carrera6.inicio.next.nombre):
 carrera7.insertarGanador(carrera6.inicio.next.next.nombre,carrera6.inicio.next.next.vel)
 
 carrera7.mostrar()
-print("----------------------------")
+print("------CARRERA 7--------")
 carrera7.carreras1a5()
 carrera7.mostrar()
 print("----------------------------")
-print("----------------------------")
+
 
 listaProceso = ListaDoblementeEnlazada()
 
@@ -225,7 +225,7 @@ actual = carrera7.inicio
 for x in range(5):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
-
+    
 actual = carrera6.inicio
 for x in range(5):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
@@ -256,18 +256,58 @@ for x in range(5):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
 
-listaProceso.mostrarTodos()
+#listaProceso.mostrarTodos()
+
+# Crea una imagen en negro
+img = np.zeros((2000,1000,3), np.uint8)
+
+# Dibuja una línea vertical
+img = cv2.line(img,(500,50),(500,950),(255,0,255),5)
 
 
 
-dot = Digraph(comment='The Round Table')
-dot.node('A', 'King Arthur')
-dot.node('B', 'Sir Bedevere the Wise')
-dot.node('L', 'Sir Lancelot the Brave')
 
-dot.edges(['AB', 'AL'])
-dot.edge('B', 'L', constraint='false')
-print(dot.source)  
+cv2.putText(img,'Nodo Raiz',(250,100), 0, 0.5,(0,255,0),2,cv2.LINE_AA)
+cv2.putText(img,'Nodos Internos',(250,180), 0, 0.5,(255,255,255),2,cv2.LINE_AA)
+cv2.putText(img,'Nodo Frontera, Nodo Hoja',(250,260), 0, 0.5,(0,255,246),2,cv2.LINE_AA)
+cv2.putText(img,'------Caballo mas rapido',(600,45), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.putText(img,'------2do Caballo mas rapido',(600,75), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
 
-dot.render('test-output/round-table.gv', view=True)  
 
+cv2.putText(img,'CARRERA 1',(800,900), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,834),(890,960),(0,255,0),1)
+
+cv2.putText(img,'CARRERA 2',(800,770), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,704),(890,833),(0,255,0),1)
+
+cv2.putText(img,'CARRERA 3',(800,645), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,570),(890,706),(0,255,0),1)
+
+cv2.putText(img,'CARRERA 4',(800,505), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,438),(890,569),(0,255,0),1)
+
+cv2.putText(img,'CARRERA 5',(800,390), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,314),(890,440),(0,255,0),1)
+
+cv2.putText(img,'CARRERA 6',(800,260), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,184),(890,315),(0,255,0),1)
+
+cv2.putText(img,'CARRERA 7',(800,120), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,54),(890,182),(0,255,0),1)
+
+for i in range(36):
+    img = cv2.circle(img,(500,40+26*i), 11, (255,255,255), -1)  
+
+img = cv2.circle(img,(500,40), 11, (0,255,0), -1)  
+img = cv2.circle(img,(500,950), 11, (0,255,246), -1)  
+
+actual = listaProceso.inicio
+for i in range(36):
+    cv2.putText(img,str(actual.vel),(492,45+26*i), 0, 0.5,(255,0,0),2,cv2.LINE_AA)
+    cv2.putText(img,actual.nombre,(520,45+26*i), 0, 0.6,(255,255,0),2,cv2.LINE_AA)
+    actual=actual.next
+
+# Mostrar la imagen
+cv2.imshow('image',img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
