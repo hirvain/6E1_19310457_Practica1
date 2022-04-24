@@ -2,7 +2,7 @@
 """
 Created on Sun Apr  3 01:17:04 2022
 
-@author: @author: Oscar Antonio García Avila  19310457  6E1
+@author: Oscar Antonio García Avila  19310457  6E1
 """
 import random
 import numpy as np
@@ -227,44 +227,48 @@ for x in range(5):
     actual = actual.next
     
 actual = carrera6.inicio
-for x in range(5):
+actual = actual.next.next.next
+for x in range(2):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
 
 actual = carrera5.inicio
-for x in range(5):
+actual = actual.next
+for x in range(4):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
     
 actual = carrera4.inicio
-for x in range(5):
+actual = actual.next
+for x in range(4):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
     
 actual = carrera3.inicio
-for x in range(5):
+actual = actual.next
+for x in range(4):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
 
 actual = carrera2.inicio
-for x in range(5):
+actual = actual.next
+for x in range(4):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
     
 actual = carrera1.inicio
-for x in range(5):
+actual = actual.next
+for x in range(4):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
 
 #listaProceso.mostrarTodos()
 
 # Crea una imagen en negro
-img = np.zeros((2000,1000,3), np.uint8)
+img = np.zeros((800,1200,3), np.uint8)
 
 # Dibuja una línea vertical
-img = cv2.line(img,(500,50),(500,950),(255,0,255),5)
-
-
+img = cv2.line(img,(500,50),(500,750),(255,0,255),5)
 
 
 cv2.putText(img,'Nodo Raiz',(250,100), 0, 0.5,(0,255,0),2,cv2.LINE_AA)
@@ -274,37 +278,37 @@ cv2.putText(img,'------Caballo mas rapido',(600,45), 0, 0.5,(255,255,180),2,cv2.
 cv2.putText(img,'------2do Caballo mas rapido',(600,75), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
 
 
-cv2.putText(img,'CARRERA 1',(800,900), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,834),(890,960),(0,255,0),1)
+cv2.putText(img,'CARRERA 1',(800,740), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,660),(890,770),(0,255,0),1)
 
-cv2.putText(img,'CARRERA 2',(800,770), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,704),(890,833),(0,255,0),1)
+cv2.putText(img,'CARRERA 2',(800,630), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,650),(890,540),(0,255,0),1)
 
-cv2.putText(img,'CARRERA 3',(800,645), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,570),(890,706),(0,255,0),1)
+cv2.putText(img,'CARRERA 3',(800,520), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,530),(890,420),(0,255,0),1)
 
-cv2.putText(img,'CARRERA 4',(800,505), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,438),(890,569),(0,255,0),1)
+cv2.putText(img,'CARRERA 4',(800,400), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,410),(890,300),(0,255,0),1)
 
-cv2.putText(img,'CARRERA 5',(800,390), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,314),(890,440),(0,255,0),1)
+cv2.putText(img,'CARRERA 5',(800,280), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,290),(890,180),(0,255,0),1)
 
-cv2.putText(img,'CARRERA 6',(800,260), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,184),(890,315),(0,255,0),1)
+cv2.putText(img,'CARRERA 6',(800,160), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,170),(890,115),(0,255,0),1)
 
-cv2.putText(img,'CARRERA 7',(800,120), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,54),(890,182),(0,255,0),1)
+cv2.putText(img,'CARRERA 7',(800,100), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
+cv2.rectangle(img,(480,110),(890,55),(0,255,0),1)
 
-for i in range(36):
-    img = cv2.circle(img,(500,40+26*i), 11, (255,255,255), -1)  
+for i in range(25):
+    img = cv2.circle(img,(500,40+30*i), 11, (255,255,255), -1)  
 
 img = cv2.circle(img,(500,40), 11, (0,255,0), -1)  
-img = cv2.circle(img,(500,950), 11, (0,255,246), -1)  
+img = cv2.circle(img,(500,760), 11, (0,255,246), -1)  
 
 actual = listaProceso.inicio
-for i in range(36):
-    cv2.putText(img,str(actual.vel),(492,45+26*i), 0, 0.5,(255,0,0),2,cv2.LINE_AA)
-    cv2.putText(img,actual.nombre,(520,45+26*i), 0, 0.6,(255,255,0),2,cv2.LINE_AA)
+for i in range(25):
+    cv2.putText(img,str(actual.vel),(492,45+30*i), 0, 0.5,(255,0,0),2,cv2.LINE_AA)
+    cv2.putText(img,actual.nombre,(520,45+30*i), 0, 0.6,(255,255,0),2,cv2.LINE_AA)
     actual=actual.next
 
 # Mostrar la imagen
