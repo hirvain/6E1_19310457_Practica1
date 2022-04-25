@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Apr  3 01:17:04 2022
-
 @author: Oscar Antonio García Avila  19310457  6E1
 """
 import random
@@ -64,7 +63,29 @@ class ListaDoblementeEnlazada:
             print(actual.vel, actual.nombre)
             actual = actual.next
 
-    def carreras1a5(self):
+    def eliminarRepetidos(self, nombre):
+        actual = self.inicio
+        primero = True
+        
+        for y in range(self.tamanio()):
+            if nombre == actual.nombre:
+                if primero == True:
+                    primero = False
+                else:
+                    actual.ant.next = actual.next
+                    actual.next.ant = actual.ant
+            
+            actual = actual.next
+
+    def tamanio(self):
+        actual = self.inicio
+        tam = 0
+        while actual != None:
+            tam+=1
+            actual = actual.next
+        return tam
+            
+    def carreras(self):
         actual = self.inicio
         #final=actual.next.next.next.next.next.nombre
         #siguienta=actual.next.next.next.next.next.next
@@ -129,27 +150,27 @@ for x in range(5):
 
 carrera1.mostrar()
 print("------CARRERA 1--------")
-carrera1.carreras1a5()
+carrera1.carreras()
 carrera1.mostrar()
 print("***********************************************")
 carrera2.mostrar()
 print("------CARRERA 2--------")
-carrera2.carreras1a5()
+carrera2.carreras()
 carrera2.mostrar()
 print("***********************************************")
 carrera3.mostrar()
 print("------CARRERA 3--------")
-carrera3.carreras1a5()
+carrera3.carreras()
 carrera3.mostrar()
 print("***********************************************")
 carrera4.mostrar()
 print("------CARRERA 4--------")
-carrera4.carreras1a5()
+carrera4.carreras()
 carrera4.mostrar()
 print("***********************************************")
 carrera5.mostrar()
 print("------CARRERA 5--------")
-carrera5.carreras1a5()
+carrera5.carreras()
 carrera5.mostrar()
 
 print("////////////////////////////////////////////////")
@@ -161,7 +182,7 @@ carrera6.insertarGanador(carrera4.inicio.nombre,carrera4.inicio.vel)
 carrera6.insertarGanador(carrera5.inicio.nombre,carrera5.inicio.vel)
 carrera6.mostrar()
 print("------CARRERA 6--------")
-carrera6.carreras1a5()
+carrera6.carreras()
 carrera6.mostrar()
 print("----------------------------")
 
@@ -212,7 +233,7 @@ carrera7.insertarGanador(carrera6.inicio.next.next.nombre,carrera6.inicio.next.n
 
 carrera7.mostrar()
 print("------CARRERA 7--------")
-carrera7.carreras1a5()
+carrera7.carreras()
 carrera7.mostrar()
 print("----------------------------")
 
@@ -227,88 +248,65 @@ for x in range(5):
     actual = actual.next
     
 actual = carrera6.inicio
-actual = actual.next.next.next
-for x in range(2):
+for x in range(5):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
 
 actual = carrera5.inicio
-actual = actual.next
-for x in range(4):
+for x in range(5):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
     
 actual = carrera4.inicio
-actual = actual.next
-for x in range(4):
+for x in range(5):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
     
 actual = carrera3.inicio
-actual = actual.next
-for x in range(4):
+for x in range(5):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
 
 actual = carrera2.inicio
-actual = actual.next
-for x in range(4):
+for x in range(5):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
     
 actual = carrera1.inicio
-actual = actual.next
-for x in range(4):
+for x in range(5):
     listaProceso.insertarGanador(actual.nombre,actual.vel)
     actual = actual.next
 
 #listaProceso.mostrarTodos()
 
 # Crea una imagen en negro
-img = np.zeros((800,1200,3), np.uint8)
+img = np.zeros((700,1000,3), np.uint8)
 
 # Dibuja una línea vertical
-img = cv2.line(img,(500,50),(500,750),(255,0,255),5)
+img = cv2.line(img,(500,50),(500,665),(255,0,255),5)
 
 
-cv2.putText(img,'Nodo Raiz',(250,100), 0, 0.5,(0,255,0),2,cv2.LINE_AA)
-cv2.putText(img,'Nodos Internos',(250,180), 0, 0.5,(255,255,255),2,cv2.LINE_AA)
-cv2.putText(img,'Nodo Frontera, Nodo Hoja',(250,260), 0, 0.5,(0,255,246),2,cv2.LINE_AA)
+cv2.putText(img,'Nodo Raiz',(230,100), 0, 0.5,(0,255,0),2,cv2.LINE_AA)
+cv2.putText(img,'Nodos Internos',(230,180), 0, 0.5,(255,255,255),2,cv2.LINE_AA)
+cv2.putText(img,'Nodo Frontera, Nodo Hoja',(230,260), 0, 0.5,(0,255,246),2,cv2.LINE_AA)
 cv2.putText(img,'------Caballo mas rapido',(600,45), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
 cv2.putText(img,'------2do Caballo mas rapido',(600,75), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
 
 
-cv2.putText(img,'CARRERA 1',(800,740), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,660),(890,770),(0,255,0),1)
-
-cv2.putText(img,'CARRERA 2',(800,630), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,650),(890,540),(0,255,0),1)
-
-cv2.putText(img,'CARRERA 3',(800,520), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,530),(890,420),(0,255,0),1)
-
-cv2.putText(img,'CARRERA 4',(800,400), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,410),(890,300),(0,255,0),1)
-
-cv2.putText(img,'CARRERA 5',(800,280), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,290),(890,180),(0,255,0),1)
-
-cv2.putText(img,'CARRERA 6',(800,160), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,170),(890,115),(0,255,0),1)
-
-cv2.putText(img,'CARRERA 7',(800,100), 0, 0.5,(255,255,180),2,cv2.LINE_AA)
-cv2.rectangle(img,(480,110),(890,55),(0,255,0),1)
-
 for i in range(25):
-    img = cv2.circle(img,(500,40+30*i), 11, (255,255,255), -1)  
+    img = cv2.circle(img,(500,40+26*i), 11, (255,255,255), -1)  
 
 img = cv2.circle(img,(500,40), 11, (0,255,0), -1)  
-img = cv2.circle(img,(500,760), 11, (0,255,246), -1)  
+img = cv2.circle(img,(500,665), 11, (0,255,246), -1)  
+
+
+for i in range(25):
+    listaProceso.eliminarRepetidos(nombres[i])
 
 actual = listaProceso.inicio
-for i in range(25):
-    cv2.putText(img,str(actual.vel),(492,45+30*i), 0, 0.5,(255,0,0),2,cv2.LINE_AA)
-    cv2.putText(img,actual.nombre,(520,45+30*i), 0, 0.6,(255,255,0),2,cv2.LINE_AA)
+for i in range(listaProceso.tamanio()):
+    cv2.putText(img,str(actual.vel),(492,45+26*i), 0, 0.5,(255,0,0),2,cv2.LINE_AA)
+    cv2.putText(img,actual.nombre,(520,45+26*i), 0, 0.6,(255,255,0),2,cv2.LINE_AA)
     actual=actual.next
 
 # Mostrar la imagen
